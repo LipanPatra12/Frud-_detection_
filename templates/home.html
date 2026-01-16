@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fraud Detection Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 800px;
+            margin: auto;
+        }
+        input {
+            width: 100%;
+            padding: 6px;
+            margin: 4px 0;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>Banking Fraud Detection System</h2>
+
+    <form action="/predict" method="post">
+
+        <!-- Group -->
+        <input type="number" step="any" name="Group" placeholder="Group" required>
+
+        <!-- Per Features -->
+        <input type="number" step="any" name="Per1" placeholder="Per1" required>
+        <input type="number" step="any" name="Per2" placeholder="Per2" required>
+        <input type="number" step="any" name="Per3" placeholder="Per3" required>
+        <input type="number" step="any" name="Per4" placeholder="Per4" required>
+        <input type="number" step="any" name="Per5" placeholder="Per5" required>
+        <input type="number" step="any" name="Per6" placeholder="Per6" required>
+        <input type="number" step="any" name="Per7" placeholder="Per7" required>
+        <input type="number" step="any" name="Per8" placeholder="Per8" required>
+        <input type="number" step="any" name="Per9" placeholder="Per9" required>
+
+        <!-- Dem Features -->
+        <input type="number" step="any" name="Dem1" placeholder="Dem1" required>
+        <input type="number" step="any" name="Dem2" placeholder="Dem2" required>
+        <input type="number" step="any" name="Dem3" placeholder="Dem3" required>
+        <input type="number" step="any" name="Dem4" placeholder="Dem4" required>
+        <input type="number" step="any" name="Dem5" placeholder="Dem5" required>
+        <input type="number" step="any" name="Dem6" placeholder="Dem6" required>
+        <input type="number" step="any" name="Dem7" placeholder="Dem7" required>
+        <input type="number" step="any" name="Dem8" placeholder="Dem8" required>
+        <input type="number" step="any" name="Dem9" placeholder="Dem9" required>
+
+        <!-- Credit Features -->
+        <input type="number" step="any" name="Cred1" placeholder="Cred1" required>
+        <input type="number" step="any" name="Cred2" placeholder="Cred2" required>
+        <input type="number" step="any" name="Cred3" placeholder="Cred3" required>
+        <input type="number" step="any" name="Cred4" placeholder="Cred4" required>
+        <input type="number" step="any" name="Cred5" placeholder="Cred5" required>
+        <input type="number" step="any" name="Cred6" placeholder="Cred6" required>
+
+        <!-- Other Features -->
+        <input type="number" step="any" name="Normalised_FNT" placeholder="Normalised_FNT" required>
+        <input type="number" step="any" name="lambda_wt" placeholder="lambda_wt" required>
+        <input type="number" step="any" name="instance_scores" placeholder="instance_scores" required>
+        <input type="number" step="any" name="qsets_normalized_tat" placeholder="qsets_normalized_tat" required>
+        <input type="number" step="any" name="geo_score" placeholder="geo_score" required>
+
+        <br><br>
+        <button type="submit">Predict</button>
+    </form>
+
+    <h3>{{ prediction_text }}</h3>
+</div>
+</body>
+</html>
