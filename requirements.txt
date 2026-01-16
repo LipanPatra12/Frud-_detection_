@@ -3,3 +3,4 @@ scikit-learn==1.7.2
 pandas
 flask
 matplotlib
+gunicorn
