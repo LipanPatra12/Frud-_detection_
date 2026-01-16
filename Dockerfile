@@ -1,21 +1,27 @@
-# Use a slim Python 3.10 image
+# Use Python 3.10 slim image
 FROM python:3.10-slim
 
-# Set working directory inside container
+# Prevent Python from writing .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Ensure stdout/stderr are shown in logs
+ENV PYTHONUNBUFFERED=1
+
+# Set working directory
 WORKDIR /app
 
-# Copy requirements first for caching
+# Copy requirements first (better caching)
 COPY requirements.txt .
 
-# Install dependencies
+# Upgrade pip and install dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy the rest of the app
+# Copy full application
 COPY . .
 
-# Expose port (Heroku assigns $PORT at runtime)
+# Heroku sets PORT dynamically
 EXPOSE 5000
 
-# Start the app using Gunicorn and Heroku POrt
-CMD exec gunicorn --workers 4 --bind 0.0.0.0:$PORT app:app
+# Start app with Gunicorn (IMPORTANT)
+CMD gunicorn app:app --bind 0.0.0.0:$PORT --workers 4
